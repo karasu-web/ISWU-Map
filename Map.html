@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>World Map with Custom Markers and Pop-ups</title>
+    <script src="https://api.mapbox.com/mapbox-gl-js/v2.11.1/mapbox-gl.js"></script>
+    <link href="https://api.mapbox.com/mapbox-gl-js/v2.11.1/mapbox-gl.css" rel="stylesheet" />
+    <link href="map.css" rel="stylesheet" type="text/css" />
+    <style>
+        #map {
+            width: 100%;
+            height: 100vh;
+        }
+        img.portrait {
+         width: 150px !important;
+        }
+  
+     
+    </style>
+</head>
+<body>
+
+<div id="map"></div>
+
+<script>
+    mapboxgl.accessToken = 'pk.eyJ1IjoibGVvMTkzIiwiYSI6ImNtNGp6dWE5OTBqM2Qya3B0aHNmdTFjeTkifQ.FrhMYD4EkwVsdsHaFIJv-Q';
+
+    const map = new mapboxgl.Map({
+        container: 'map', // HTML element id where the map will be displayed
+        style: 'mapbox://styles/leo193/cm4n8lfe8004t01r309qn5s2j', // New Mapbox style URL
+        center: [137.75, 35.75], // Center of the map (between Japan and South Korea)
+        zoom: 4 // Adjusted zoom level to show both countries
+    });
+
+    // Coordinates
+    const southKoreaCoords = [129.2569, 35.9078];
+    const secondKoreaCoords = [127.7769, 35.9078]; // Adjusted longitude for the second marker
+    const japanCoords = [137.7264, 35.5116];
+    const northAmericaCoords = [-100.0, 35.4283];
+    const portugalCoords = [-8.2245, 39.3999];
+    const italyCoords = [14.1905, 41.8654];
+
+    // Pop-ups
+    const southKoreaPopup = new mapboxgl.Popup({ offset: 25 })
+        .setHTML(`
+            <div class="popup-content">
+                <img src="Red_Cross_Korea.webp" alt="Red Cross Korea" />
+                <p>Henkel Consumer Brands</p>
+                <p><strong>Partner: </strong> Red Cross </p>
+                <p><strong>Location: </strong> South Korea</p>
+                <p><strong>Partnership Overview:</strong> In September 2024 Henkel Consumer Brands Korea is proud to continue our partnership with the Korean Red Cross by donating 46,000 products from our trusted brands like Homekeeper, Homemat, Persil, Pril, and Combat. Through our Mosquito Zero Campaign, we’re not just tackling pesky mosquitoes - we are making a meaningful impact on vulnerable communities across Korea.🌍 With every Red Cross edition product sold, we’re helping to make summers safer for those who need it most. </p>
+            </div>
+        `);
+
+    const secondKoreaPopup = new mapboxgl.Popup({ offset: 25 })
+        .setHTML(`
+            <div class="popup-content">
+                <img src="samsung.webp" alt="Second Korea Partner" />
+                <p><strong>Brand: </strong> Persil </p>
+                <p><strong>Partner: </strong> Samsung</p>
+                <p><strong>Location: </strong> South Korea</p>
+                <p><strong>Partnership Overview:</strong> Henkel and Samsung join forces in April 2024 for an optimized laundry experience: Henkel and Samsung introduce custom wash cycles that reduce energy consumption by 60 percent: Henkel and Samsung have teamed up to offer a laundry experience that combines superior wash performance with energy efficiency for the South Korean market.</p>
+                <a href="https://www.persil.de/" target="_blank" style="color: #007bff; text-decoration: underline; font-weight: bold;">
+                Read More
+            </a>
+            </div>
+        `);
+
+    const japanPopup = new mapboxgl.Popup({ offset: 25 })
+        .setHTML(`
+            <div class="popup-content">
+                <img src="picture1.webp" alt="Japan Partner" />
+                <p><strong>Brand: </strong> Shiseido Professional</p>
+                <p><strong>Partner: </strong> Water Aid </p>
+                <p><strong>Location: </strong> Japan</p>
+                <p><strong>Partnership Overview:  </strong> SUBLIMIC believes that water is essential to our experience of beauty. It cleanses. It heals. It gives us a feeling of well-being. SUBLIMIC started SHARE WATER PROJECT in May 2021 to share the blessings of water with people in need by introducing the special package in collaboration with calligrapher LINTALOW HASHIGUCHI. For each one sold, we donated partial sales to WaterAid.</p>
+            </div>
+        `);
+
+    
+    const northAmericaPopup = new mapboxgl.Popup({ offset: 25 })
+        .setHTML(`
+            <div class="popup-content">
+                <img src="NorthAmericaCutitout.png" alt="SALONORY Partner" />
+                <p><strong>Brand: </strong> SALONORY</p>
+                <p><strong>Partner: </strong> Professional Beauty Association (PBA) and Cut It Out</p>
+                <p><strong>Location: </strong> North America</p>
+                <p><strong>Partnership Overview:</strong> SALONORY is proud to partner with the PBA and Cut It Out® to support Domestic Violence Awareness Month. For every product purchased throughout the month, we will donate $1 to CUT IT OUT® (up to $10,000.) Your purchases can make a significant impact and contribute to a critical cause. The CUT IT OUT® program offers free training to help beauty professionals recognize signs of abuse and refer victims to appropriate resources.</p>
+            </div>
+        `);
+
+    const portugalPopup = new mapboxgl.Popup({ offset: 25 })
+        .setHTML(`
+            <div class="popup-content">
+                <img src="PersilMakeawish.webp" alt="Make-A-Wish Portugal" />
+                <p><strong>Brand: </strong> Persil</p>
+                <p><strong>Partner: </strong> Make-A-Wish</p>
+                <p><strong>Location: </strong> Portugal</p>
+                <p><strong>Partnership Overview:</strong> Under the motto "For the wishes of children, together we give our best", Persil in 2024 once again joins Make-A-Wish in fulfilling the wishes of seriously ill children and young people. The partnership, which takes place for the 5th consecutive year, aims to make a difference in the lives of seriously ill children and young people, contributing to the fulfillment of wishes and to bring strength, joy and hope, encouraging them to overcome adversity.</p>
+            </div>
+        `);
+
+    const italyPopup = new mapboxgl.Popup({ offset: 25 })
+        .setHTML(`
+            <div class="popup-content">
+                <img class="portrait" src="PerlanaItaly.webp" alt="Perlana at Vinokilo" />
+                <p><strong>Brand: </strong> Perlana</p>
+                <p><strong>Partner: </strong> Vinokilo</p>
+                <p><strong>Location: </strong> Italy</p>
+                <p><strong>Partnership Overview:</strong> In October 2023 Perlana was one of the key protagonists of the event at Milano Centrale’s Vinokilo, one of the largest vintage and second-hand markets in Europe. Perlana, with its #RethinkFashion project, embraces the same values of sustainability as Vinokilo.</p>
+            </div>
+        `);
+
+
+    // Function to create custom marker element with a local image
+    function createCustomMarker() {
+        const markerElement = document.createElement('div');
+        markerElement.className = 'custom-marker';
+        markerElement.style.backgroundImage = 'url(marker.png)'; // Use the relative path to your marker image
+        return markerElement;
+    }
+
+    // Add custom markers
+    new mapboxgl.Marker({
+        element: createCustomMarker()
+    })
+    .setLngLat(southKoreaCoords)
+    .setPopup(southKoreaPopup) // Attach the pop-up to the marker
+    .addTo(map);
+
+    new mapboxgl.Marker({
+        element: createCustomMarker()
+    })
+    .setLngLat(secondKoreaCoords)
+    .setPopup(secondKoreaPopup) // Attach a different pop-up to the second marker
+    .addTo(map);
+
+    new mapboxgl.Marker({
+        element: createCustomMarker()
+    })
+    .setLngLat(japanCoords)
+    .setPopup(japanPopup) // Attach the pop-up to the marker
+    .addTo(map);
+
+    new mapboxgl.Marker({
+        element: createCustomMarker()
+    })
+    .setLngLat(northAmericaCoords)
+    .setPopup(northAmericaPopup)
+    .addTo(map);
+
+    new mapboxgl.Marker({ element: createCustomMarker() })
+        .setLngLat(portugalCoords)
+        .setPopup(portugalPopup)
+        .addTo(map);
+
+        new mapboxgl.Marker({
+        element: createCustomMarker()
+    })
+    .setLngLat(italyCoords)
+    .setPopup(italyPopup) // Attach the Italy pop-up
+    .addTo(map);
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,67 @@
+.mapboxgl-popup-content {
+    background: #fff;
+    border-radius: 15px;
+    box-shadow: 7px 4px 12px rgb(0 0 0 / 39%);
+    padding: 19px 10px 15px;
+    pointer-events: auto;
+    position: relative;
+    width: 500px;
+    border-top: 15px solid #174036;
+}
+
+.popup-content img {
+    display: block; /* Remove inline display */
+    margin-left: auto; /* Center the image horizontally */
+    margin-right: auto; /* Center the image horizontally */
+    width: 200% !important; /* Make the image 2x size */
+    height: auto;
+    max-width: 500px; /* Remove the maximum width constraint */
+    margin-bottom: 15px; /* Space between the image and the paragraph */
+}
+
+
+
+
+p {
+    text-align: left; /* Keep the paragraph text aligned to the left */
+}
+
+a.mapboxgl-ctrl-logo {
+    display: none;
+}
+
+.mapboxgl-ctrl-bottom-right {
+    bottom: 0;
+    right: 0;
+    display: none;
+}
+
+.custom-marker {
+    width: 38px;
+    height: 58px;
+    background-size: cover;
+    background-position: center;
+    border-radius: 50%;
+    
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+img .portrait{
+    width: 240px;
+}
+
+.popup-content p {
+    font-size: 21px;
+    margin-top: 10px;
+}
+
+.mapboxgl-popup-close-button {
+    background-color: transparent;
+    border: 0;
+    border-radius: 0 3px 0 0;
+    cursor: pointer;
+    position: absolute;
+    right: -3px;
+    top: -9px;
+    font-size: 30px;
+}
