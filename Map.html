@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>World Map with Custom Markers and Pop-ups</title>
-    <script src="https://shajidarman.github.io/https://api.mapbox.com/mapbox-gl-js/v2.11.1/mapbox-gl.js"></script>
+    <script src="https://api.mapbox.com/mapbox-gl-js/v2.11.1/mapbox-gl.js"></script>
     <link href="https://api.mapbox.com/mapbox-gl-js/v2.11.1/mapbox-gl.css" rel="stylesheet" />
-    <link href="https://shajidarman.github.io/map.css" rel="stylesheet" type="text/css" />
+    <link href="https://shajidarman.github.io/ISWU_MAP/map.css" rel="stylesheet" type="text/css" />
     <style>
         #map {
             width: 100%;
@@ -45,7 +45,7 @@
     const southKoreaPopup = new mapboxgl.Popup({ offset: 25 })
         .setHTML(`
             <div class="popup-content">
-                <img src="https://shajidarman.github.io/Red_Cross_Korea.webp" alt="Red Cross Korea" />
+                <img src="Red_Cross_Korea.webp" alt="Red Cross Korea" />
                 <p>Henkel Consumer Brands</p>
                 <p><strong>Partner: </strong> Red Cross </p>
                 <p><strong>Location: </strong> South Korea</p>
@@ -56,7 +56,7 @@
     const secondKoreaPopup = new mapboxgl.Popup({ offset: 25 })
         .setHTML(`
             <div class="popup-content">
-                <img src="https://shajidarman.github.io/samsung.webp" alt="Second Korea Partner" />
+                <img src="samsung.webp" alt="Second Korea Partner" />
                 <p><strong>Brand: </strong> Persil </p>
                 <p><strong>Partner: </strong> Samsung</p>
                 <p><strong>Location: </strong> South Korea</p>
@@ -70,7 +70,7 @@
     const japanPopup = new mapboxgl.Popup({ offset: 25 })
         .setHTML(`
             <div class="popup-content">
-                <img src="https://shajidarman.github.io/picture1.webp" alt="Japan Partner" />
+                <img src="picture1.webp" alt="Japan Partner" />
                 <p><strong>Brand: </strong> Shiseido Professional</p>
                 <p><strong>Partner: </strong> Water Aid </p>
                 <p><strong>Location: </strong> Japan</p>
@@ -82,7 +82,7 @@
     const northAmericaPopup = new mapboxgl.Popup({ offset: 25 })
         .setHTML(`
             <div class="popup-content">
-                <img src="https://shajidarman.github.io/NorthAmericaCutitout.png" alt="SALONORY Partner" />
+                <img src="NorthAmericaCutitout.png" alt="SALONORY Partner" />
                 <p><strong>Brand: </strong> SALONORY</p>
                 <p><strong>Partner: </strong> Professional Beauty Association (PBA) and Cut It Out</p>
                 <p><strong>Location: </strong> North America</p>
@@ -93,7 +93,7 @@
     const portugalPopup = new mapboxgl.Popup({ offset: 25 })
         .setHTML(`
             <div class="popup-content">
-                <img src="https://shajidarman.github.io/PersilMakeawish.webp" alt="Make-A-Wish Portugal" />
+                <img src="PersilMakeawish.webp" alt="Make-A-Wish Portugal" />
                 <p><strong>Brand: </strong> Persil</p>
                 <p><strong>Partner: </strong> Make-A-Wish</p>
                 <p><strong>Location: </strong> Portugal</p>
@@ -104,7 +104,7 @@
     const italyPopup = new mapboxgl.Popup({ offset: 25 })
         .setHTML(`
             <div class="popup-content">
-                <img class="portrait" src="https://shajidarman.github.io/PerlanaItaly.webp" alt="Perlana at Vinokilo" />
+                <img class="portrait" src="PerlanaItaly.webp" alt="Perlana at Vinokilo" />
                 <p><strong>Brand: </strong> Perlana</p>
                 <p><strong>Partner: </strong> Vinokilo</p>
                 <p><strong>Location: </strong> Italy</p>
@@ -117,7 +117,7 @@
     function createCustomMarker() {
         const markerElement = document.createElement('div');
         markerElement.className = 'custom-marker';
-        markerElement.style.backgroundImage = 'url(https://shajidarman.github.io/marker.png)'; // Use the relative path to your marker image
+        markerElement.style.backgroundImage = 'url(https://shajidarman.github.io/ISWU_MAP/marker.png)'; // Use the relative path to your marker image
         return markerElement;
     }
 
